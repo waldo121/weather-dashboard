@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "board-service"
+version = "0.1.0"
+description = ""
+authors = ["raphael bouchard"]
+readme = "README.md"
+packages = [
+         { include = "src" }
+         ]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+rpi-gpio = "^0.7.1"
+pydantic = "^2.4.2"
+httpx = "^0.25.2"
+schedule = "^1.2.1"
+pydantic-settings = "^2.1.0"
+smbus2 = "^0.4.3"
+
+
+[tool.poetry.group.dev.dependencies]
+isort = "^5.12.0"
+black = "^23.11.0"
+flake8 = "^6.1.0"
+ruff = "^0.1.5"
+mypy = "^1.7.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

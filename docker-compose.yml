@@ -1,0 +1,13 @@
+version: '3.3'
+
+services:
+  domoticz:
+    image: domoticz/domoticz:stable
+    container_name: domoticz
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./config:/opt/domoticz/userdata
+    environment:
+      - TZ=America/Toronto

@@ -1,0 +1,6 @@
+*.py[cod]
+.env
+**/__pycache__
+
+# domoticz user data
+config
