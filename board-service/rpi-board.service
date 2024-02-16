@@ -1,0 +1,9 @@
+[Unit]
+Description=Board service of the temperature dashboard app
+
+[Service]
+WorkingDirectory=/home/raph/src/weather-dashboard/board-service
+ExecStart=/home/raph/.cache/pypoetry/virtualenvs/board-service-M7q-wW2I-py3.11/bin/python src/app.py
+
+[Install]
+WantedBy=default.target

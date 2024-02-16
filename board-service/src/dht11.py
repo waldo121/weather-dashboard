@@ -11,6 +11,7 @@ Slightly adapted from
 **********************************************************************
 """
 import time
+import logging
 
 import RPi.GPIO as GPIO
 
@@ -24,8 +25,9 @@ STATE_DATA_FIRST_PULL_DOWN = 3
 STATE_DATA_PULL_UP = 4
 STATE_DATA_PULL_DOWN = 5
 
+logger = logging.getLogger(__name__)
 
-def read_dht11_dat(gpio_pin: int):
+def read(gpio_pin: int):
     """
     Takes as input:
         - The gpio pin that the sensor is plugged in
@@ -90,7 +92,7 @@ def read_dht11_dat(gpio_pin: int):
             else:
                 continue
     if len(lengths) != 40:
-        # print ("Data not good, skip")
+        logger.error("Invalid data")
         return False
 
     shortest_pull_up = min(lengths)
@@ -118,7 +120,7 @@ def read_dht11_dat(gpio_pin: int):
     # print (the_bytes)
     checksum = (the_bytes[0] + the_bytes[1] + the_bytes[2] + the_bytes[3]) & 0xFF
     if the_bytes[4] != checksum:
-        # print ("Data not good, skip")
+        logger.error("Invalid data")
         return False
 
     return the_bytes[0], the_bytes[2]

@@ -98,5 +98,7 @@ def _write(x: int, y: int, txt: str):
 def setup():
     _init(0x27, 1) # init(slave address, background light)
 
-def write(text: str):
-    _write(0, 0, text)
+def write(text_first_line: str, text_second_line: str):
+	_clear()
+	_write(0, 0, text_first_line)
+	_write(0,1, text_second_line)

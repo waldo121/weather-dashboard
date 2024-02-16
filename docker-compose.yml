@@ -9,5 +9,6 @@ services:
       - "8080:8080"
     volumes:
       - ./config:/opt/domoticz/userdata
+      - /sys/bus/w1/devices:/sys/bus/w1/devices:ro
     environment:
       - TZ=America/Toronto
